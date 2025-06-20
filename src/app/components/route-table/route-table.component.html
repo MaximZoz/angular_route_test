@@ -1,6 +1,6 @@
 <div class="p-4">
   <div class="sort-container" *ngIf="isPhone()">
-    <label for="sort-select">Сортировать по:</label>
+    <label for="sort-select">{{ localeService.translate('sortBy') }}</label>
     <select id="sort-select" (change)="onSortChange($event)">
       <option *ngFor="let field of displayedColumns" [value]="field">
         {{ getFieldLabel(field) }}

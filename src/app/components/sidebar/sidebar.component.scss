@@ -30,3 +30,21 @@
   flex: 1;
   overflow-y: auto;
 }
+
+button {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Добавляем отступ между иконкой и текстом */
+  color: #e0e0e0;
+  margin-bottom: 16px;
+}
+
+button:hover {
+  color: #ffffff;
+}
+
+.locale-label {
+  font-size: 12px;
+  font-weight: bold;
+  color: #e0e0e0;
+}

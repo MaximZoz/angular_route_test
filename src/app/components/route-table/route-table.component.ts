@@ -21,6 +21,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { MatIconModule } from '@angular/material/icon'; // Импортируем MatIconModule
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'; // Импортируем BreakpointObserver
+import { LocaleService } from '../../services/locale.service';
 
 @Component({
   selector: 'app-route-table',
@@ -54,7 +55,7 @@ export class RouteTableComponent
   private routeTableService = inject(RouteTableService);
   private breakpointObserver = inject(BreakpointObserver); // Инжектируем BreakpointObserver
 
-  constructor() {}
+  constructor(public localeService: LocaleService) {}
 
   ngOnInit() {
     // Используем isPhone для управления отображением
@@ -157,21 +158,14 @@ export class RouteTableComponent
 
   getInterfaceDisplayValue(interfaceKey: string): string {
     const interfaceMapping: { [key: string]: string } = {
-      internet: 'Подключение интернет',
-      guest: 'Гостевая сеть',
-      home: 'Домашняя сеть',
+      internet: this.localeService.translate('internet'),
+      guest: this.localeService.translate('guest'),
+      home: this.localeService.translate('home'),
     };
     return interfaceMapping[interfaceKey] || interfaceKey;
   }
 
   getFieldLabel(field: string): string {
-    const labels: { [key: string]: string } = {
-      uuid: 'UUID',
-      address: 'Адрес назначения',
-      mask: 'Маска',
-      gateway: 'Шлюз',
-      interface: 'Интерфейс',
-    };
-    return labels[field] || field;
+    return this.localeService.translate(field);
   }
 }

@@ -12,5 +12,6 @@ import { RouteTableComponent } from './components/route-table/route-table.compon
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  isPhone = signal(false); // Используем signal для управления состоянием
+  isPhone = signal(false);
+  locale = signal('en');
 }

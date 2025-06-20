@@ -1,6 +1,9 @@
 <div class="sidebar">
   <button mat-icon-button (click)="togglePhone()">
-    <mat-icon>{{ isPhone() ? 'computer': 'phone_iphone' }}</mat-icon>
+    <mat-icon>{{ isPhone() ? 'computer' : 'phone_iphone' }}</mat-icon>
+  </button>
+  <button mat-icon-button (click)="toggleLocale()">
+    <span class="locale-label">{{ locale === 'en' ? 'RU' : 'EN' }}</span> <!-- Добавляем текстовую метку -->
   </button>
 </div>
 <div class="sidebar-content">
