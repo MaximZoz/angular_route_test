@@ -1,9 +1,6 @@
 <div class="sidebar">
-  <div class="icon" *ngFor="let icon of icons">
-    <mat-icon>{{ icon }}</mat-icon>
-  </div>
-  <button mat-icon-button (click)="toggleImage()">
-    <mat-icon>{{ isPhone ? 'phone_iphone' : 'computer' }}</mat-icon>
+  <button mat-icon-button (click)="togglePhone()">
+    <mat-icon>{{ isPhone() ? 'computer': 'phone_iphone' }}</mat-icon>
   </button>
 </div>
 <div class="sidebar-content">

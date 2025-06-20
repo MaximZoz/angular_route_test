@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { WritableSignal } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,12 +12,9 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent {
-  @Input() isPhone = false; // Свойство для привязки
-  @Output() isPhoneChange = new EventEmitter<boolean>(); // Событие для двусторонней привязки
-  icons = ['home', 'settings', 'info', 'help'];
+  @Input() isPhone!: WritableSignal<boolean>; // Принимаем WritableSignal<boolean>
 
-  toggleImage(): void {
-    this.isPhone = !this.isPhone; // Переключаем значение
-    this.isPhoneChange.emit(this.isPhone); // Уведомляем об изменении
+  togglePhone(): void {
+    this.isPhone.set(!this.isPhone()); // Переключаем значение isPhone
   }
 }

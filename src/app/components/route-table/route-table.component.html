@@ -1,5 +1,5 @@
 <div class="p-4">
-  <div class="sort-container" *ngIf="isPhone">
+  <div class="sort-container" *ngIf="isPhone()">
     <label for="sort-select">Сортировать по:</label>
     <select id="sort-select" (change)="onSortChange($event)">
       <option *ngFor="let field of displayedColumns" [value]="field">
@@ -12,7 +12,7 @@
   </div>
 
   <!-- Таблица -->
-  <div class="table-container mat-elevation-z8" *ngIf="!isPhone">
+  <div class="table-container mat-elevation-z8" *ngIf="!isPhone()">
     <table mat-table [dataSource]="dataSource()" matSort class="sticky-table">
       <ng-container *ngFor="let field of displayedColumns" [matColumnDef]="field">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ getFieldLabel(field) }} </th>
@@ -25,7 +25,7 @@
   </div>
 
   <!-- Карточки -->
-  <div class="card-container" *ngIf="isPhone">
+  <div class="card-container" *ngIf="isPhone()">
     <div class="card" *ngFor="let route of sortedRoutes()">
       <div class="card-content card-styled">
         <ng-container *ngFor="let field of displayedColumns">

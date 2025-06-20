@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -12,5 +12,5 @@ import { RouteTableComponent } from './components/route-table/route-table.compon
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  isPhone = false; // Свойство для управления состоянием
+  isPhone = signal(false); // Используем signal для управления состоянием
 }

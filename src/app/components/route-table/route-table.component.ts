@@ -5,6 +5,7 @@ import {
   AfterViewChecked,
   OnDestroy,
   signal,
+  WritableSignal,
   inject,
   Input,
 } from '@angular/core';
@@ -19,6 +20,7 @@ import { Route } from '../../models/route.model';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { MatIconModule } from '@angular/material/icon'; // Импортируем MatIconModule
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'; // Импортируем BreakpointObserver
 
 @Component({
   selector: 'app-route-table',
@@ -28,7 +30,7 @@ import { MatIconModule } from '@angular/material/icon'; // Импортируе�
     MatTableModule,
     MatButtonModule,
     MatSortModule,
-    MatIconModule, // Добавляем MatIconModule
+    MatIconModule,
   ],
   templateUrl: './route-table.component.html',
   styleUrls: ['./route-table.component.scss'],
@@ -36,7 +38,7 @@ import { MatIconModule } from '@angular/material/icon'; // Импортируе�
 export class RouteTableComponent
   implements OnInit, AfterViewChecked, OnDestroy
 {
-  @Input() isPhone = false;
+  @Input() isPhone!: WritableSignal<boolean>; // Убедимся, что isPhone принимает WritableSignal<boolean>
 
   displayedColumns = DISPLAYED_COLUMNS;
   dataSource = signal(new MatTableDataSource<Route>([]));
@@ -50,10 +52,22 @@ export class RouteTableComponent
   @ViewChild(MatSort) sort!: MatSort;
 
   private routeTableService = inject(RouteTableService);
+  private breakpointObserver = inject(BreakpointObserver); // Инжектируем BreakpointObserver
 
   constructor() {}
 
   ngOnInit() {
+    // Используем isPhone для управления отображением
+    console.log('isPhone:', this.isPhone());
+
+    // Определяем isPhone в зависимости от ширины экрана
+    this.breakpointObserver
+      .observe([Breakpoints.Handset])
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((result) => {
+        this.isPhone.set(result.matches); // Устанавливаем значение isPhone
+      });
+
     this.routeTableService
       .getRoutes()
       .pipe(takeUntil(this.destroy$))
