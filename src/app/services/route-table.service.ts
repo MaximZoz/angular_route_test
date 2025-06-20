@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Route } from '../models/route.model';
 import { MOCK_ROUTES } from '../data/mock-routes';
 
@@ -7,9 +7,13 @@ import { MOCK_ROUTES } from '../data/mock-routes';
   providedIn: 'root',
 })
 export class RouteTableService {
-  private routes = MOCK_ROUTES;
+  private routesSubject = new BehaviorSubject<Route[]>(MOCK_ROUTES);
 
-  getDataSource(): MatTableDataSource<Route> {
-    return new MatTableDataSource(this.routes);
+  getRoutes(): Observable<Route[]> {
+    return this.routesSubject.asObservable();
+  }
+
+  updateRoutes(newRoutes: Route[]): void {
+    this.routesSubject.next(newRoutes);
   }
 }

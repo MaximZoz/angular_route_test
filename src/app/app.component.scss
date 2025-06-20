@@ -1,0 +1,15 @@
+:host {
+  overflow: hidden; // Убираем горизонтальную прокрутку
+}
+
+app-sidebar {
+  flex-shrink: 0; // Запрещаем сжатие боковой панели
+}
+
+app-route-table {
+  flex: 1; // Таблица занимает оставшееся пространство
+  display: flex;
+  flex-direction: column;
+  width: 100%; // Таблица занимает всю высоту
+  overflow: hidden; // Убираем прокрутку
+}

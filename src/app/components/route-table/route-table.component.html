@@ -1,8 +1,19 @@
 <div class="p-4">
+  <div class="sort-container" *ngIf="isPhone">
+    <label for="sort-select">Сортировать по:</label>
+    <select id="sort-select" (change)="onSortChange($event)">
+      <option *ngFor="let field of displayedColumns" [value]="field">
+        {{ getFieldLabel(field) }}
+      </option>
+    </select>
+    <button mat-icon-button (click)="toggleSortDirection()" class="sort-direction">
+      <mat-icon>{{ sortDirection() === 'asc' ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+    </button>
+  </div>
 
-  <div class="table-container">
-    <!-- Таблица для больших экранов -->
-    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  <!-- Таблица -->
+  <div class="table-container mat-elevation-z8" *ngIf="!isPhone">
+    <table mat-table [dataSource]="dataSource()" matSort class="sticky-table">
       <ng-container *ngFor="let field of displayedColumns" [matColumnDef]="field">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ getFieldLabel(field) }} </th>
         <td mat-cell *matCellDef="let route"> {{ getRouteField(route, field) }} </td>
@@ -13,9 +24,9 @@
     </table>
   </div>
 
-  <!-- Карточки для маленьких экранов -->
-  <div class="card-container">
-    <div class="card" *ngFor="let route of dataSource.data">
+  <!-- Карточки -->
+  <div class="card-container" *ngIf="isPhone">
+    <div class="card" *ngFor="let route of sortedRoutes()">
       <div class="card-content card-styled">
         <ng-container *ngFor="let field of displayedColumns">
           <div class="card-row">
@@ -28,5 +39,4 @@
       </div>
     </div>
   </div>
-
 </div>

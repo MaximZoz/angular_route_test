@@ -1,0 +1,202 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%; // Таблица занимает всю высоту родительского контейнера
+  width: 100%; // Таблица занимает всю ширину родительского контейнера
+  overflow: hidden; // Убираем горизонтальную прокрутку
+}
+
+.table-container {
+  flex: 1;
+  display: flex;
+  justify-content: stretch; // Растягиваем таблицу по ширине
+  align-items: stretch; // Растягиваем таблицу по высоте
+  width: 100%; // Контейнер занимает всю ширину
+  overflow: auto; // Добавляем прокрутку для таблицы
+  box-sizing: border-box; // Учитываем границы и отступы
+}
+
+table {
+  width: 100%; // Таблица занимает всю ширину контейнера
+  height: 100%;
+  border-collapse: collapse;
+  background-color: transparent; // Убираем фон таблицы
+  color: #e0e0e0;
+  box-sizing: border-box; // Учитываем границы и отступы
+  border-bottom: 1px solid #333; // Добавляем нижнюю границу для таблицы
+}
+
+.mat-mdc-header-row {
+  position: sticky; // Фиксируем шапку таблицы
+  top: 0; // Фиксируем шапку в верхней части таблицы
+  z-index: 2; // Устанавливаем приоритет отображения
+  background-color: #f3f3f3; // Цвет фона шапки
+  font-weight: bold;
+}
+
+.mat-mdc-header-cell,
+.mat-mdc-cell {
+  text-align: left;
+  border: 1px solid #333;
+  white-space: nowrap; // Предотвращаем перенос текста
+  overflow: hidden; // Убираем переполнение текста
+  text-overflow: ellipsis; // Добавляем многоточие для длинного текста
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column; // Карточки располагаются вертикально
+  align-items: stretch; // Карточки растягиваются на всю ширину контейнера
+  width: 100%; // Контейнер занимает всю ширину
+  height: 100%; // Контейнер занимает всю высоту
+  padding: 16px; // Добавляем внутренние отступы
+  box-sizing: border-box; // Учитываем отступы и границы в ширине
+  overflow-y: auto; // Добавляем вертикальную прокрутку, если карточки не помещаются
+  overflow-x: hidden; // Убираем горизонтальную прокрутку
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px; // Добавляем отступ между карточками
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff; // Белый фон для карточек
+  width: 100%; // Карточка занимает всю ширину контейнера
+  box-sizing: border-box; // Учитываем отступы и границы в ширине
+  flex-shrink: 0; // Предотвращаем сжатие карточек
+}
+
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.card-row {
+  margin-bottom: 8px;
+}
+
+.card-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+}
+
+.card-content {
+  margin-bottom: 8px;
+}
+
+.sort-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 8px;
+}
+
+.sort-container label {
+  font-weight: bold;
+  color: #333;
+}
+
+.sort-container select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  font-size: 14px;
+}
+
+.sort-direction {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  padding: 4px;
+  transition: color 0.3s;
+}
+
+.sort-direction:hover {
+  color: #000;
+}
+
+mat-icon {
+  font-size: 20px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-content {
+  margin-bottom: 8px;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.card-container {
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+}
+
+.card-row {
+  margin-bottom: 8px;
+}
+
+.card-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+}
+
+.mat-mdc-header-cell,
+.mat-mdc-cell {
+  font-size: 10px; // Уменьшаем размер текста
+  padding: 4px; // Уменьшаем отступы
+}
+
+.card {
+  font-size: 12px; // Уменьшаем размер текста в карточках
+  padding: 8px; // Уменьшаем внутренние отступы
+}
+
+.card-content {
+  font-size: 10px; // Уменьшаем размер текста в содержимом карточек
+}
+
+.sort-container {
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 8px;
+}
+
+.sort-container label {
+  font-weight: bold;
+  color: #333;
+}
+
+.sort-container select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  font-size: 14px;
+}

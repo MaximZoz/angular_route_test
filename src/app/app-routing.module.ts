@@ -1,13 +1,11 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'route-table', pathMatch: 'full' },
-  { path: 'route-table', loadComponent: () => import('./route-table/route-table.component').then(m => m.RouteTableComponent) },
+  {
+    path: '',
+    loadComponent: () =>
+      import('./components/route-table/route-table.component')
+        .then(m => m.RouteTableComponent)
+  },
+  // ...другие маршруты...
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule {}
