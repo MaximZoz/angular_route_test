@@ -19,8 +19,8 @@ import { DISPLAYED_COLUMNS } from '../../data/displayed-columns';
 import { Route } from '../../models/route.model';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { MatIconModule } from '@angular/material/icon'; // Импортируем MatIconModule
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'; // Импортируем BreakpointObserver
+import { MatIconModule } from '@angular/material/icon';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { LocaleService } from '../../services/locale.service';
 
 @Component({
@@ -39,34 +39,30 @@ import { LocaleService } from '../../services/locale.service';
 export class RouteTableComponent
   implements OnInit, AfterViewChecked, OnDestroy
 {
-  @Input() isPhone!: WritableSignal<boolean>; // Убедимся, что isPhone принимает WritableSignal<boolean>
+  @Input() isPhone!: WritableSignal<boolean>;
 
   displayedColumns = DISPLAYED_COLUMNS;
   dataSource = signal(new MatTableDataSource<Route>([]));
   routes = signal<Route[]>([]);
   sortedRoutes = signal<Route[]>([]);
   currentSortField = signal<string>('address');
-  sortDirection = signal<'asc' | 'desc'>('asc'); // Делаем sortDirection сигналом
+  sortDirection = signal<'asc' | 'desc'>('asc');
 
   private destroy$ = new Subject<void>();
 
   @ViewChild(MatSort) sort!: MatSort;
 
   private routeTableService = inject(RouteTableService);
-  private breakpointObserver = inject(BreakpointObserver); // Инжектируем BreakpointObserver
+  private breakpointObserver = inject(BreakpointObserver);
 
   constructor(public localeService: LocaleService) {}
 
   ngOnInit() {
-    // Используем isPhone для управления отображением
-    console.log('isPhone:', this.isPhone());
-
-    // Определяем isPhone в зависимости от ширины экрана
     this.breakpointObserver
       .observe([Breakpoints.Handset])
       .pipe(takeUntil(this.destroy$))
       .subscribe((result) => {
-        this.isPhone.set(result.matches); // Устанавливаем значение isPhone
+        this.isPhone.set(result.matches);
       });
 
     this.routeTableService
@@ -75,7 +71,7 @@ export class RouteTableComponent
       .subscribe((routes) => {
         this.routes.set(routes);
         this.dataSource().data = routes;
-        this.sortCards(); // Сортируем карточки при загрузке данных
+        this.sortCards();
       });
 
     this.dataSource().sortingDataAccessor = (item, property) => {
@@ -92,7 +88,6 @@ export class RouteTableComponent
   }
 
   ngAfterViewChecked() {
-    // Повторно привязываем MatSort к таблице
     if (this.sort && this.dataSource().sort !== this.sort) {
       this.dataSource().sort = this.sort;
     }
@@ -105,12 +100,12 @@ export class RouteTableComponent
 
   onSortChange(event: Event): void {
     const selectElement = event.target as HTMLSelectElement;
-    this.currentSortField.set(selectElement.value); // Обновляем сигнал
+    this.currentSortField.set(selectElement.value);
     this.sortCards();
   }
 
   toggleSortDirection(): void {
-    this.sortDirection.set(this.sortDirection() === 'asc' ? 'desc' : 'asc'); // Переключаем направление
+    this.sortDirection.set(this.sortDirection() === 'asc' ? 'desc' : 'asc');
     this.sortCards();
   }
 
@@ -130,19 +125,19 @@ export class RouteTableComponent
       if (valueA > valueB) return direction === 'asc' ? 1 : -1;
       return 0;
     });
-    this.sortedRoutes.set(sorted); // Обновляем сигнал
+    this.sortedRoutes.set(sorted);
   }
 
   private ipToNumber(ip: string): number {
     if (!ip || !this.isValidIp(ip)) return -1;
     const [octet1, octet2, octet3, octet4] = ip.split('.').map(Number);
-    return octet1 * 256 ** 3 + octet2 * 256 ** 2 + octet3 * 256 + octet4; // Преобразуем IP в число
+    return octet1 * 256 ** 3 + octet2 * 256 ** 2 + octet3 * 256 + octet4;
   }
 
   private isValidIp(ip: string): boolean {
     const ipRegex =
       /^(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)$/;
-    return ipRegex.test(ip); // Проверяем корректность IP-адреса
+    return ipRegex.test(ip);
   }
 
   applyFilter(filterValue: string): void {
