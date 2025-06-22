@@ -1,4 +1,5 @@
 :host {
+  text-align: center !important; // Выравниваем текст в шапке таблицы по центру
   display: flex;
   flex-direction: column;
   height: 100%; // Таблица занимает всю высоту родительского контейнера
@@ -7,6 +8,7 @@
 }
 
 .table-container {
+  text-align: center !important; // Выравниваем текст в шапке таблицы по центру
   flex: 1;
   display: flex;
   justify-content: stretch; // Растягиваем таблицу по ширине
@@ -14,33 +16,60 @@
   width: 100%; // Контейнер занимает всю ширину
   overflow: auto; // Добавляем прокрутку для таблицы
   box-sizing: border-box; // Учитываем границы и отступы
+  padding: 20px;
 }
 
 table {
-  width: 100%; // Таблица занимает всю ширину контейнера
-  height: 100%;
+  border-bottom: 1px solid #333;
   border-collapse: collapse;
-  background-color: transparent; // Убираем фон таблицы
-  color: #e0e0e0;
-  box-sizing: border-box; // Учитываем границы и отступы
-  border-bottom: 1px solid #333; // Добавляем нижнюю границу для таблицы
 }
 
 .mat-mdc-header-row {
+  width: 100%; // Таблица занимает всю ширину контейнера
+  height: 100%;
   position: sticky; // Фиксируем шапку таблицы
   top: 0; // Фиксируем шапку в верхней части таблицы
   z-index: 2; // Устанавливаем приоритет отображения
   background-color: #f3f3f3; // Цвет фона шапки
   font-weight: bold;
+  text-align: center !important; // Выравниваем текст в шапке таблицы по центру
 }
 
-.mat-mdc-header-cell,
-.mat-mdc-cell {
-  text-align: left;
+.mat-mdc-header-cell {
+  text-align: center; // Выравниваем текст в шапке таблицы по центру
+  vertical-align: middle; // Выравниваем текст по вертикали
   border: 1px solid #333;
   white-space: nowrap; // Предотвращаем перенос текста
   overflow: hidden; // Убираем переполнение текста
   text-overflow: ellipsis; // Добавляем многоточие для длинного текста
+  font-size: 10px; // Уменьшаем размер текста
+  padding: 4px; // Уменьшаем отступы
+}
+
+.mat-sort-header-container {
+  display: block; // Устанавливаем display: block
+  text-align: center; // Центрируем текст
+  margin: 0 auto; // Центрируем содержимое
+}
+
+.mat-mdc-cell {
+  text-align: center; // Выравниваем текст в ячейках по центру
+  border: 1px solid #333;
+  white-space: nowrap; // Предотвращаем перенос текста
+  overflow: hidden; // Убираем переполнение текста
+  text-overflow: ellipsis; // Добавляем многоточие для длинного текста
+}
+
+/* Стили для конкретного селектора */
+table thead tr th .mat-sort-header-container {
+  display: block !important; // Устанавливаем display: block
+  text-align: center; // Центрируем текст
+  margin: 0 auto; // Центрируем содержимое
+}
+
+.header-align {
+  text-align: end !important;
+  vertical-align: bottom; // Выравниваем текст по вертикали
 }
 
 .card-container {
@@ -53,6 +82,8 @@ table {
   box-sizing: border-box; // Учитываем отступы и границы в ширине
   overflow-y: auto; // Добавляем вертикальную прокрутку, если карточки не помещаются
   overflow-x: hidden; // Убираем горизонтальную прокрутку
+  text-align: center;
+  display: block;
 }
 
 .card {
@@ -65,6 +96,13 @@ table {
   width: 100%; // Карточка занимает всю ширину контейнера
   box-sizing: border-box; // Учитываем отступы и границы в ширине
   flex-shrink: 0; // Предотвращаем сжатие карточек
+  font-size: 12px; // Уменьшаем размер текста в карточках
+  padding: 8px; // Уменьшаем внутренние отступы
+}
+
+.card-content {
+  margin-bottom: 8px;
+  font-size: 10px; // Уменьшаем размер текста в содержимом карточек
 }
 
 .card-actions {
@@ -84,20 +122,18 @@ table {
   padding: 4px 0;
 }
 
-.card-content {
-  margin-bottom: 8px;
-}
-
 .sort-container {
-  display: flex;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 24px; // Увеличиваем нижний отступ для сортировки
   gap: 8px;
+  margin: 16px; // Отступы вокруг контейнера сортировки
+  padding: 8px; // Внутренние отступы для сортировки
 }
 
 .sort-container label {
   font-weight: bold;
   color: #333;
+  margin-right: 8px; // Отступ справа от текста "Сортировать по:"
 }
 
 .sort-container select {
@@ -107,6 +143,7 @@ table {
   background-color: #fff;
   color: #333;
   font-size: 14px;
+  margin-left: 8px; // Отступ слева от выпадающего списка
 }
 
 .sort-direction {
@@ -116,6 +153,7 @@ table {
   color: #333;
   padding: 4px;
   transition: color 0.3s;
+  margin-left: 8px; // Отступ слева от кнопки направления сортировки
 }
 
 .sort-direction:hover {
@@ -126,33 +164,10 @@ mat-icon {
   font-size: 20px;
 }
 
-.card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.card-content {
-  margin-bottom: 8px;
-}
-
-.card-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 8px;
-}
-
 .card-container {
   text-align: center;
   width: 100%;
   display: block;
-}
-table {
-  width: 100%;
-  height: 100%;
-  border-collapse: collapse;
 }
 
 .card-row {
@@ -166,8 +181,7 @@ table {
   padding: 4px 0;
 }
 
-.mat-mdc-header-cell,
-.mat-mdc-cell {
+.mat-mdc-header-cell {
   font-size: 10px; // Уменьшаем размер текста
   padding: 4px; // Уменьшаем отступы
 }

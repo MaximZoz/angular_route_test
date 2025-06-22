@@ -15,7 +15,9 @@
   <div class="table-container mat-elevation-z8" *ngIf="!isPhone()">
     <table mat-table [dataSource]="dataSource()" matSort class="sticky-table">
       <ng-container *ngFor="let field of displayedColumns" [matColumnDef]="field">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ getFieldLabel(field) }} </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="header-align">
+          {{ getFieldLabel(field) }}
+        </th>
         <td mat-cell *matCellDef="let route"> {{ getRouteField(route, field) }} </td>
       </ng-container>
 
