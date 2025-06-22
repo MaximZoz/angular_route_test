@@ -114,7 +114,7 @@ export class RouteTableComponent
     this.sortCards();
   }
 
-  private sortCards(): void {
+  sortCards(): void {
     const field = this.currentSortField();
     const direction = this.sortDirection();
     const sorted = [...this.routes()].sort((a, b) => {

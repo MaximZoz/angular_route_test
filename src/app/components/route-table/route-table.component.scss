@@ -1,216 +1,216 @@
+@import "../../../styles/variables";
+
 :host {
-  text-align: center !important; // Выравниваем текст в шапке таблицы по центру
+  text-align: center !important;
   display: flex;
   flex-direction: column;
-  height: 100%; // Таблица занимает всю высоту родительского контейнера
-  width: 100%; // Таблица занимает всю ширину родительского контейнера
-  overflow: hidden; // Убираем горизонтальную прокрутку
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 .table-container {
-  text-align: center !important; // Выравниваем текст в шапке таблицы по центру
+  text-align: center !important;
   flex: 1;
   display: flex;
-  justify-content: stretch; // Растягиваем таблицу по ширине
-  align-items: stretch; // Растягиваем таблицу по высоте
-  width: 100%; // Контейнер занимает всю ширину
-  overflow: auto; // Добавляем прокрутку для таблицы
-  box-sizing: border-box; // Учитываем границы и отступы
-  padding: 20px;
+  justify-content: stretch;
+  align-items: stretch;
+  width: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+  padding: $padding-large;
 }
 
 table {
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid $border-color;
   border-collapse: collapse;
 }
 
 .mat-mdc-header-row {
-  width: 100%; // Таблица занимает всю ширину контейнера
+  width: 100%;
   height: 100%;
-  position: sticky; // Фиксируем шапку таблицы
-  top: 0; // Фиксируем шапку в верхней части таблицы
-  z-index: 2; // Устанавливаем приоритет отображения
-  background-color: #f3f3f3; // Цвет фона шапки
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: $background-color-header;
   font-weight: bold;
-  text-align: center !important; // Выравниваем текст в шапке таблицы по центру
+  text-align: center !important;
 }
 
 .mat-mdc-header-cell {
-  text-align: center; // Выравниваем текст в шапке таблицы по центру
-  vertical-align: middle; // Выравниваем текст по вертикали
-  border: 1px solid #333;
-  white-space: nowrap; // Предотвращаем перенос текста
-  overflow: hidden; // Убираем переполнение текста
-  text-overflow: ellipsis; // Добавляем многоточие для длинного текста
-  font-size: 10px; // Уменьшаем размер текста
-  padding: 4px; // Уменьшаем отступы
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid $border-color;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: $font-size-small;
+  padding: $padding-small;
 }
 
 .mat-sort-header-container {
-  display: block; // Устанавливаем display: block
-  text-align: center; // Центрируем текст
-  margin: 0 auto; // Центрируем содержимое
+  display: block;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .mat-mdc-cell {
-  text-align: center; // Выравниваем текст в ячейках по центру
-  border: 1px solid #333;
-  white-space: nowrap; // Предотвращаем перенос текста
-  overflow: hidden; // Убираем переполнение текста
-  text-overflow: ellipsis; // Добавляем многоточие для длинного текста
+  text-align: center;
+  border: 1px solid $border-color;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Стили для конкретного селектора */
 table thead tr th .mat-sort-header-container {
-  display: block !important; // Устанавливаем display: block
-  text-align: center; // Центрируем текст
-  margin: 0 auto; // Центрируем содержимое
+  display: block !important;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .header-align {
   text-align: end !important;
-  vertical-align: bottom; // Выравниваем текст по вертикали
+  vertical-align: bottom;
 }
 
 .card-container {
   display: flex;
-  flex-direction: column; // Карточки располагаются вертикально
-  align-items: stretch; // Карточки растягиваются на всю ширину контейнера
-  width: 100%; // Контейнер занимает всю ширину
-  height: 100%; // Контейнер занимает всю высоту
-  padding: 16px; // Добавляем внутренние отступы
-  box-sizing: border-box; // Учитываем отступы и границы в ширине
-  overflow-y: auto; // Добавляем вертикальную прокрутку, если карточки не помещаются
-  overflow-x: hidden; // Убираем горизонтальную прокрутку
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  height: 100%;
+  padding: $padding-large;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
   text-align: center;
   display: block;
 }
 
 .card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 16px; // Добавляем отступ между карточками
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff; // Белый фон для карточек
-  width: 100%; // Карточка занимает всю ширину контейнера
-  box-sizing: border-box; // Учитываем отступы и границы в ширине
-  flex-shrink: 0; // Предотвращаем сжатие карточек
-  font-size: 12px; // Уменьшаем размер текста в карточках
-  padding: 8px; // Уменьшаем внутренние отступы
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  padding: $padding-large;
+  margin-bottom: $padding-large;
+  box-shadow: $box-shadow;
+  background-color: $background-color-card;
+  width: 100%;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  font-size: $font-size-medium;
+  padding: $padding-medium;
 }
 
 .card-content {
-  margin-bottom: 8px;
-  font-size: 10px; // Уменьшаем размер текста в содержимом карточек
+  margin-bottom: $padding-small;
+  font-size: $font-size-small;
 }
 
 .card-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 8px;
+  gap: $padding-small;
 }
 
 .card-row {
-  margin-bottom: 8px;
+  margin-bottom: $padding-small;
 }
 
 .card-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 4px 0;
+  padding: $padding-small 0;
 }
 
 .sort-container {
   align-items: center;
-  margin-bottom: 24px; // Увеличиваем нижний отступ для сортировки
-  gap: 8px;
-  margin: 16px; // Отступы вокруг контейнера сортировки
-  padding: 8px; // Внутренние отступы для сортировки
+  margin-bottom: $padding-large;
+  gap: $padding-small;
+  margin: $padding-large;
+  padding: $padding-medium;
 }
 
 .sort-container label {
   font-weight: bold;
-  color: #333;
-  margin-right: 8px; // Отступ справа от текста "Сортировать по:"
+  color: $text-color;
+  margin-right: $padding-small;
 }
 
 .sort-container select {
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: #fff;
-  color: #333;
-  font-size: 14px;
-  margin-left: 8px; // Отступ слева от выпадающего списка
+  padding: $padding-medium;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  background-color: $background-color-card;
+  color: $text-color;
+  font-size: $font-size-medium;
+  margin-left: $padding-small;
 }
 
 .sort-direction {
   background: none;
   border: none;
   cursor: pointer;
-  color: #333;
-  padding: 4px;
+  color: $text-color;
+  padding: $padding-small;
   transition: color 0.3s;
-  margin-left: 8px; // Отступ слева от кнопки направления сортировки
+  margin-left: $padding-small;
 }
 
 .sort-direction:hover {
-  color: #000;
+  color: darken($text-color, 10%);
 }
 
 mat-icon {
   font-size: 20px;
 }
 
-.card-container {
-  text-align: center;
-  width: 100%;
-  display: block;
-}
-
-.card-row {
-  margin-bottom: 8px;
-}
-
 .card-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 4px 0;
+  padding: $padding-small 0;
 }
 
 .mat-mdc-header-cell {
-  font-size: 10px; // Уменьшаем размер текста
-  padding: 4px; // Уменьшаем отступы
+  font-size: $font-size-small;
+  padding: $padding-small;
 }
 
 .card {
-  font-size: 12px; // Уменьшаем размер текста в карточках
-  padding: 8px; // Уменьшаем внутренние отступы
+  font-size: $font-size-medium;
+  padding: $padding-medium;
 }
 
 .card-content {
-  font-size: 10px; // Уменьшаем размер текста в содержимом карточек
+  font-size: $font-size-small;
 }
 
 .sort-container {
   align-items: center;
-  margin-bottom: 16px;
-  gap: 8px;
+  margin-bottom: $padding-medium;
+  gap: $padding-small;
 }
 
 .sort-container label {
   font-weight: bold;
-  color: #333;
+  color: $text-color;
 }
 
 .sort-container select {
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: #fff;
-  color: #333;
-  font-size: 14px;
+  padding: $padding-medium;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  background-color: $background-color-card;
+  color: $text-color;
+  font-size: $font-size-medium;
+}
+
+.sort-container select {
+  padding: $padding-medium;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  background-color: $background-color-card;
+  color: $text-color;
+  font-size: $font-size-medium;
 }

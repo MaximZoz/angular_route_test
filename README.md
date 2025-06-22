@@ -1,59 +1,66 @@
 # Angular20Test
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+Данный проект создан с помощью [Angular CLI](https://github.com/angular/angular-cli) версии 19.2.15.
 
-## Development server
+## Запуск локального сервера разработки
 
-To start a local development server, run:
+Для запуска локального сервера используйте команду:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+После запуска сервер будет доступен по адресу: [http://localhost:4200/](http://localhost:4200/). Приложение автоматически перезагрузится при изменении исходных файлов.
 
-## Code scaffolding
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Сборка проекта
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+Для сборки проекта выполните:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Собранные файлы будут находиться в папке `dist/`. По умолчанию сборка оптимизирована для production.
 
-## Running unit tests
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+По умолчанию Angular CLI не включает e2e-фреймворк — выберите подходящий для себя.
 
-```bash
-ng test
-```
+## Работа с RouteTableComponent
 
-## Running end-to-end tests
+Компонент `RouteTableComponent` используется для отображения таблицы маршрутов. Он поддерживает следующие функции:
+- Сортировка маршрутов по столбцам.
+- Фильтрация маршрутов.
+- Адаптивное отображение для мобильных устройств.
 
-For end-to-end (e2e) testing, run:
+### Свойства компонента
 
-```bash
-ng e2e
-```
+- **`isPhone`**: Управляет отображением таблицы для мобильных устройств. Тип: `WritableSignal<boolean>`.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### Методы компонента
 
-## Additional Resources
+- **`applyFilter(filterValue: string): void`**: Применяет фильтр к таблице маршрутов.
+- **`toggleSortDirection(): void`**: Переключает направление сортировки.
+- **`getRouteField(route: Route, field: string): string`**: Возвращает значение поля маршрута.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Работа с SidebarComponent
+
+Компонент `SidebarComponent` используется для отображения боковой панели. Он поддерживает следующие функции:
+- Переключение между мобильным и десктопным режимами.
+- Переключение локали приложения.
+
+### Свойства компонента
+
+- **`isPhone`**: Управляет отображением боковой панели для мобильных устройств. Тип: `WritableSignal<boolean>`.
+
+### Методы компонента
+
+- **`togglePhone(): void`**: Переключает режим отображения между мобильным и десктопным.
+- **`toggleLocale(): void`**: Переключает локаль приложения между `en` и `ru`.
+
+## Дополнительные ресурсы
+
+- [Документация Angular CLI](https://angular.dev/tools/cli)
+- [Документация Angular](https://angular.dev/)
+
+---

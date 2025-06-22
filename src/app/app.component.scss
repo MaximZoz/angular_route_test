@@ -1,11 +1,11 @@
 app-sidebar {
-  flex-shrink: 0; // Запрещаем сжатие боковой панели
+  flex-shrink: 0;
 }
 
 app-route-table {
-  flex: 1; // Таблица занимает оставшееся пространство
+  flex: 1;
   display: flex;
   flex-direction: column;
-  width: 100%; // Таблица занимает всю высоту
-  overflow: hidden; // Убираем прокрутку
+  width: 100%;
+  overflow: hidden;
 }
